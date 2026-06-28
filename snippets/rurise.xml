@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <remote  name="rurise"
+           fetch="https://github.com/RuriseOS/"
+           revision="refs/heads/16.2" />
+
+  <remote  name="clover"
+           fetch="https://github.com/The-Clover-Project"
+           sync-c="true"
+           sync-j="4"
+           revision="refs/heads/16-qpr2" />
+
+  <remote  name="clover-gitlab"
+           fetch="https://gitlab.com/thecloverproject/"
+           revision="refs/heads/16-qpr2" />
+
+  <!-- RuriseOS additions -->
+  <project path="android" name="android" remote="rurise" />
+
+  <project path="build/make" name="build_make" groups="pdk,sysui-studio" remote="rurise" >
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+
+  <project path="build/soong" name="build_soong" groups="pdk,tradefed,sysui-studio" remote="rurise" />
+
+  <project path="device/lineage/sepolicy" name="device_rurise_sepolicy" remote="rurise" />
+
+  <project path="frameworks/av" name="frameworks_av" groups="pdk,sysui-studio" remote="rurise" />
+  <project path="frameworks/base" name="frameworks_base" groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="rurise" />
+  <project path="frameworks/native" name="frameworks_native" groups="pdk" remote="rurise" />
+
+  <project path="lineage-sdk" name="lineage-sdk" remote="rurise" />
+
+  <project path="packages/apps/GameSpace" name="packages_apps_GameSpace" remote="rurise" />
+  <project path="packages/apps/Launcher3" name="packages_apps_Launcher3" groups="pdk-fs,sysui-studio,pdk-cw-tvc" remote="rurise" />
+  <project path="packages/apps/RuriseSettings" name="packages_apps_RuriseSettings" remote="rurise" />
+  <project path="packages/apps/Settings" name="packages_apps_Settings" groups="pdk-fs,pdk-cw-tvc,sysui-studio" remote="rurise" />
+  <project path="packages/apps/ThemePicker" name="packages_apps_ThemePicker" groups="pdk-fs,sysui-studio" remote="rurise" />
+  <project path="packages/apps/WallpaperPicker2" name="packages_apps_WallpaperPicker2" groups="pdk-fs,sysui-studio" remote="rurise" />
+
+  <project path="vendor/addons" name="vendor_addons" remote="rurise" />
+  <project path="vendor/lineage" name="vendor_rurise" remote="rurise" />
+
+  <project path="vendor/pixel/extract-utils" name="vendor_pixel_extract-utils" remote="clover-gitlab" >
+    <linkfile src="extract-all.sh" dest="vendor/pixel/extract-all.sh" />
+  </project>
+  <project path="vendor/pixel/gms" name="vendor_pixel_gms" remote="clover-gitlab" />
+  <project path="vendor/pixel/launcher" name="vendor_pixel_launcher" remote="clover-gitlab" />
+  <project path="vendor/pixel/sounds" name="vendor_pixel_sounds" remote="clover-gitlab" />
+  <project path="vendor/pixel/themepicker" name="vendor_pixel_themepicker" remote="clover-gitlab" />
+  <project path="vendor/prebuilts" name="vendor_prebuilts" remote="clover" clone-depth="1" />
+</manifest>
